@@ -1,8 +1,8 @@
 require 'stringio'
 
 module Helpers
-  def mock_io(value = 'mock')
-    StringIO.new(value)
+  def mock_io(input: 'mock', output: 'mock')
+    { input: StringIO.new(input), output: StringIO.new(output) }
   end
 end
 
