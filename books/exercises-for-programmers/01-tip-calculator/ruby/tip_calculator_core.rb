@@ -4,6 +4,12 @@ class TipCalculatorCore
     @tip_percent = tip_percent
   end
 
+  def results
+    { tip: calculated_tip, total: calculated_total }
+  end
+
+  private
+
   def calculated_tip
     formatted_output tip
   end
@@ -11,8 +17,6 @@ class TipCalculatorCore
   def calculated_total
     formatted_output total
   end
-
-  private
 
   def formatted_output(value)
     format '$%.2f', value

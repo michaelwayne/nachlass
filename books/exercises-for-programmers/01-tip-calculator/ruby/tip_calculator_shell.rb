@@ -12,7 +12,8 @@ class TipCalculatorShell
 
     core = TipCalculatorCore.new(bill_amount: @bill_amount,
                                  tip_percent: @tip_percent)
-    display_tip_and_total core
+
+    display_tip_and_total core.results
   end
 
   def prompt_for_bill_amount
@@ -33,9 +34,9 @@ class TipCalculatorShell
     output error_message
   end
 
-  def display_tip_and_total(core)
-    output "Tip: #{core.calculated_tip}\n"
-    output "Total: #{core.calculated_total}\n"
+  def display_tip_and_total(results)
+    output "Tip: #{results[:tip]}\n"
+    output "Total: #{results[:total]}\n"
   end
 
   private

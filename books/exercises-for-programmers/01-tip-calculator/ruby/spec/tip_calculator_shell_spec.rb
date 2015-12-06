@@ -98,21 +98,17 @@ describe TipCalculatorShell do
   describe '#display_tip_and_total' do
     before do
       @io = mock_io
-      @shell = TipCalculatorShell.new(@io)
-      @core = double
-      allow(@core).to receive(:calculated_tip).and_return('$22.50')
-      allow(@core).to receive(:calculated_total).and_return('$172.50')
-      @shell.display_tip_and_total(@core)
+      @results = { tip: '$22.50', total: '$172.50' }
+      shell = TipCalculatorShell.new(@io)
+      shell.display_tip_and_total(@results)
     end
 
     it 'displays the calculated tip' do
-      tip = "Tip: #{@core.calculated_tip}\n"
-      expect(@io[:output].string).to include(tip)
+      expect(@io[:output].string).to include("Tip: #{@results[:tip]}\n")
     end
 
     it 'displays the calculated total' do
-      total = "Total: #{@core.calculated_total}\n"
-      expect(@io[:output].string).to include(total)
+      expect(@io[:output].string).to include("Total: #{@results[:total]}\n")
     end
   end
 end
